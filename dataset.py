@@ -2,7 +2,6 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision import transforms as tsf
-import cv2
 
 
 batch_size = 64
@@ -21,10 +20,23 @@ def get_data_loader():
     return train_loader,test_loader
 
 
-# 显示数据集中的图片
-# with open("data/MNIST/raw/train-images-idx3-ubyte","rb") as f:
-#     file=f.read()
-#     image1=[int(str(item).encode('ascii'),16) for item in file[16:16+784]]
-#     image1_np=np.array(image1,dtype=np.uint8).reshape(28,28,1)
-#     cv2.imshow("image1_np",image1_np)
-#     cv2.waitKey(0)
+# 显示数据集中的图片（matplotlib 网格布局，一屏显示多张带标题）
+def show_images(rows=8, cols=8):
+    import matplotlib.pyplot as plt
+
+    # 单独建一个不做 Normalize 的数据集，方便直接显示原图
+    raw_set = datasets.MNIST(root="data", train=True, download=True,
+                             transform=tsf.ToTensor())
+    plt.figure(figsize=(cols * 1.5, rows * 1.5))
+    for i in range(rows * cols):
+        image, label = raw_set[i]          # image 形状为 (1, 28, 28)
+        plt.subplot(rows, cols, i + 1)
+        plt.imshow(image.squeeze().numpy(), cmap="gray")  # squeeze 去掉通道维
+        plt.title(str(label))
+        plt.axis("off")
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == "__main__":
+    show_images()
