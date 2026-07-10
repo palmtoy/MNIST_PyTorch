@@ -5,10 +5,11 @@
 
 ## 数据集
 
-MNIST数据集官网下载地址：
-
-http://yann.lecun.com/exdb/mnist/
-
+MNIST 数据集下载地址:
+wget https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
+wget https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
+wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
+wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
 
 ## 精度
 
