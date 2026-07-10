@@ -28,12 +28,3 @@ def get_data_loader():
 #     image1_np=np.array(image1,dtype=np.uint8).reshape(28,28,1)
 #     cv2.imshow("image1_np",image1_np)
 #     cv2.waitKey(0)
-
-
-
-
-
-
-
-
-

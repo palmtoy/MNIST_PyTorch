@@ -63,9 +63,3 @@ if __name__ == "__main__":
 
     # 保存模型
     torch.save(model,"save_model/model.pt")
-
-
-
-
-
-

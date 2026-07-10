@@ -52,6 +52,3 @@ class CNN(nn.Module):
         # dim=1表示按行计算
 
         return output
-
-
-
