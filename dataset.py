@@ -26,7 +26,7 @@ def show_train_images(rows = 8, cols = 8):
     # 单独建一个不做 Normalize 的数据集, 方便直接显示原图
     raw_set = datasets.MNIST(root = "data", train = True, download = True,
                              transform = tsf.ToTensor())
-    plt.figure(figsize = (cols * 1.5, rows * 1.5))
+    plt.figure(figsize = (cols * 1.5, rows * 1.5))  # 每格 1.5 英寸
     for i in range(rows * cols):
         image, label = raw_set[i]  # image 形状为 (1, 28, 28), 表示单通道灰度图
         plt.subplot(rows, cols, i + 1)
