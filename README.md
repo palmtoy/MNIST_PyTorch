@@ -23,6 +23,8 @@ $ mkdir -p ./data/MNIST/raw
 
 $ mkdir -p ./save_model
 
+查看训练数据集中的图片：python dataset.py
+
 启动训练脚本：python train.py
 
 启动验证脚本：python eval.py

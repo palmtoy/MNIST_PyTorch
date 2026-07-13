@@ -19,8 +19,8 @@ def get_data_loader():
     return train_loader, test_loader
 
 
-# 显示数据集中的图片 ( matplotlib 网格布局, 一屏显示多张带标题 )
-def show_images(rows = 8, cols = 8):
+# 显示训练数据集中的图片 ( matplotlib 网格布局, 一屏显示多张带标题 )
+def show_train_images(rows = 8, cols = 8):
     import matplotlib.pyplot as plt
 
     # 单独建一个不做 Normalize 的数据集, 方便直接显示原图
@@ -38,4 +38,4 @@ def show_images(rows = 8, cols = 8):
 
 
 if __name__ == "__main__":
-    show_images()
+    show_train_images()
