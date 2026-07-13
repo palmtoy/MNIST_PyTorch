@@ -11,11 +11,15 @@ wget https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
 wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
 wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
 
+将下载的 *.gz 文件放入 ./data/MNIST/raw 目录下.
+
 ## 精度
 
 98.88%
 
 ## 使用说明
+
+$ mkdir -p ./data/MNIST/raw
 
 $ mkdir -p ./save_model
 
