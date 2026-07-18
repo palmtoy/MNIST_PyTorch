@@ -43,9 +43,9 @@ if __name__ == "__main__":
         loss = 0.
         with torch.no_grad():
             for digit, label in test_loader:
-                digit, lable = digit.to(device), label.to(device)
+                digit, label = digit.to(device), label.to(device)
                 output = model(digit)  # 模型输出
-                loss += F.cross_entropy(output, lable).item()
+                loss += F.cross_entropy(output, label).item()
 
                 predict = output.max(dim=1, keepdim=True)[1]
                 # 找到概率最大值的下标, 1表示按行计算。
