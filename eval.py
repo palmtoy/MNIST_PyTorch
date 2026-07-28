@@ -6,9 +6,14 @@ from dataset import get_data_loader
 if __name__ == "__main__":
     _, eval_loader = get_data_loader()  # 因为没有验证集, 所以将测试集作为验证集使用。
     batch_size = 64
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = torch.load("save_model/model.pt", weights_only=False)    # 加载模型
-    # model.eval()  # 设置为验证模式
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")  # Apple Silicon (M1/M2/M3) GPU 加速
+    else:
+        device = torch.device("cpu")
+    model = torch.load("save_model/model.pt", weights_only = False).to(device)  # 加载模型并搬到对应设备
+    model.eval()  # 设置为验证模式
 
     acc = 0.
     with torch.no_grad():
