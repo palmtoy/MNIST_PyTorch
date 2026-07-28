@@ -13,7 +13,7 @@ class CNN(nn.Module):
 
     def forward(self, x):
         # x.shape = batch_size * channels( = 1 ) * 28 * 28
-        input_size = x.size(0)  # 获取batch_size
+        input_size = x.size(0)  # 获取 batch_size
 
         x = self.conv1(x)
         # input: batch_size * 1 * 28 * 28  ( in_channels = 1, out_channels = 10 )
@@ -25,10 +25,10 @@ class CNN(nn.Module):
 
         x = F.max_pool2d(x, kernel_size = 2, stride = 2)
         # input: batch_size * 10 * 24 * 24
-        # output: batch_size * 10 * 12 * 12  ( stride = 2, 因此尺寸减半 )
+        # output: batch_size * 10 * 12 * 12  ( stride = 2, 因此尺寸减半, 24/2 = 12 )
 
         x = self.conv2(x)
-        # input: batch_size * 10 * 12 * 12  ( in_channels = 1, out_channels = 10 )
+        # input: batch_size * 10 * 12 * 12  ( in_channels = 10, out_channels = 20 )
         # output: batch_size * 20 * 10 * 10  ( 10 = 12 - 3 + 1)
 
         x = F.relu(x)
