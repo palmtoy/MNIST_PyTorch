@@ -20,10 +20,10 @@ if __name__ == "__main__":
         for digit, label in eval_loader:
             digit, label = digit.to(device), label.to(device)
             output = model(digit)  # 模型输出
-            predict = output.max(dim=1, keepdim=True)[1]
-            # 找到概率最大值的下标, 1表示按行计算。
-            # max()返回两个值, 第一个是值, 第二个是索引, 所以取 max[1]
+            predict = output.max(dim = 1, keepdim = True)[1]
+            # 找到概率最大值的下标, 1 表示按行计算
+            # max() 返回两个值, 第一个是值, 第二个是索引, 所以取 max[1]
 
             acc += predict.eq(label.view_as(predict)).sum().item()
-        accuracy = acc/len(eval_loader.dataset) * 100
+        accuracy = acc / len(eval_loader.dataset) * 100
         print("eval accuracy: {: .4f}%".format(accuracy))
