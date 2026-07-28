@@ -7,7 +7,6 @@ import torch.optim as optim
 
 
 if __name__ == "__main__":
-
     # 超参
     batch_size = 64
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -24,8 +23,8 @@ if __name__ == "__main__":
 
     # 训练
     def train(epoch_i):
-        model.train()   # 设置为训练模式
-        for batch_i,(digit,label) in enumerate(train_loader):
+        model.train()  # 设置为训练模式
+        for batch_i, (digit, label) in enumerate(train_loader):
             digit, label = digit.to(device), label.to(device)
             optimizer.zero_grad()  # 梯度初始化为0
             output = model(digit)  # 训练结果,output是概率
@@ -34,7 +33,7 @@ if __name__ == "__main__":
             optimizer.step()  # 更新参数
 
             if batch_i % 100 == 0:
-                print("train    epoch_i: {}    batch_i: {}    loss: {: .8f}".format(epoch_i,batch_i,loss.item()))
+                print("train    epoch_i: {}    batch_i: {}    loss: {: .8f}".format(epoch_i, batch_i, loss.item()))
 
     # 测试
     def test(epoch_i):
@@ -47,7 +46,7 @@ if __name__ == "__main__":
                 output = model(digit)  # 模型输出
                 loss += F.cross_entropy(output, label).item()
 
-                predict = output.max(dim=1, keepdim=True)[1]
+                predict = output.max(dim = 1, keepdim = True)[1]
                 # 找到概率最大值的下标, 1表示按行计算。
                 # max()返回两个值, 第一个是值, 第二个是索引, 所以取 max[1]
 
