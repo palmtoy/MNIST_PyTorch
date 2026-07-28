@@ -9,7 +9,12 @@ import torch.optim as optim
 if __name__ == "__main__":
     # 超参
     batch_size = 64
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")  # Apple Silicon (M1/M2/M3) GPU 加速
+    else:
+        device = torch.device("cpu")
     epoch = 5
 
     # 选择模型
