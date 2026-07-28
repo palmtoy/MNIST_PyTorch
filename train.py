@@ -1,4 +1,4 @@
-# 日期：2021年07月17日
+# 日期: 2021年07月17日
 import torch
 import cnn
 import torch.nn.functional as F
@@ -26,9 +26,9 @@ if __name__ == "__main__":
         model.train()  # 设置为训练模式
         for batch_i, (digit, label) in enumerate(train_loader):
             digit, label = digit.to(device), label.to(device)
-            optimizer.zero_grad()  # 梯度初始化为0
-            output = model(digit)  # 训练结果,output是概率
-            loss = F.cross_entropy(output,label)  # 定义损失函数,交叉熵损失函数适用于多分类问题
+            optimizer.zero_grad()  # 梯度初始化为 0
+            output = model(digit)  # 训练结果, output 是概率
+            loss = F.cross_entropy(output, label)  # 定义损失函数, 交叉熵损失函数适用于多分类问题
             loss.backward()  # 反向传播
             optimizer.step()  # 更新参数
 
@@ -47,7 +47,7 @@ if __name__ == "__main__":
                 loss += F.cross_entropy(output, label).item()
 
                 predict = output.max(dim = 1, keepdim = True)[1]
-                # 找到概率最大值的下标, 1表示按行计算。
+                # 找到概率最大值的下标, 1 表示按行计算。
                 # max()返回两个值, 第一个是值, 第二个是索引, 所以取 max[1]
 
                 acc += predict.eq(label.view_as(predict)).sum().item()
